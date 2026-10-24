@@ -12,8 +12,8 @@
 			<span class="title">🤖 Agent Chat</span>
 			<div class="controls">
 				<div class="protocol-group" id="protocolGroup">
-					<button data-protocol="http" class="active">HTTP</button>
-					<button data-protocol="sse">SSE</button>
+					<button data-protocol="sse" class="active">SSE</button>
+					<button data-protocol="http">HTTP</button>
 					<button data-protocol="ws">WebSocket</button>
 				</div>
 				<button class="clear" onclick="clearChat()">清空对话</button>
@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="chat-container" id="chatContainer"></div>
-		<div class="status-bar" id="statusBar">协议：HTTP</div>
+		<div class="status-bar" id="statusBar">协议：SSE</div>
 
 		<div class="input-area">
 			<textarea id="userInput" rows="1" placeholder="输入消息，Enter 发送，Shift+Enter 换行"></textarea>

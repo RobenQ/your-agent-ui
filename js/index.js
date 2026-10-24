@@ -1,15 +1,16 @@
 // ==================== 配置 ====================
 const CONFIG = {
-	sseUrl: "http://127.0.0.1:8090/chat/stream",
-	wsUrl: "ws://127.0.0.1:8090/chat/ws",
-	httpUrl: "http://127.0.0.1:8090/chat/invoke",
-	resumeUrl: "http://127.0.0.1:8090/chat/resume",
+	sseUrl: "http://192.168.124.6:8090/chat/invoke_stream",
+	sseResumeUrl: "http://192.168.124.6:8090/chat/resume_stream",
+	wsUrl: "ws://192.168.124.6:8090/chat/ws",
+	httpUrl: "http://192.168.124.6:8090/chat/invoke",
+	resumeUrl: "http://192.168.124.6:8090/chat/resume",
 };
 
 // ==================== 状态 ====================
 const state = {
 	threadId: "session-" + Date.now(),
-	protocol: "http",
+	protocol: "sse",
 	isStreaming: false,
 	abortController: null,
 	ws: null,
@@ -245,7 +246,7 @@ async function resumeBySSE(interruptInfo, answer) {
 		};
 		if (interruptInfo?.id) body.interrupt_id = interruptInfo.id;
 
-		return await consumeSSE(CONFIG.resumeUrl, body, newDiv);
+		return await consumeSSE(CONFIG.sseResumeUrl, body, newDiv);
 	} finally {
 		cursor.remove();
 	}
